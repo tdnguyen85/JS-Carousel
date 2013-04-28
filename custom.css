@@ -1,0 +1,9 @@
+img {
+	width: 100%;
+}
+
+#container {
+	overflow: hidden;
+	width: 462px;
+	height: 346px;
+}
