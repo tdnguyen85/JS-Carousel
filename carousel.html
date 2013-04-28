@@ -5,14 +5,14 @@
 	</head>
 	<body>
 		<div id="container">
-			<img src="http://www.spikelupton.co.uk/Resources/100_1641.jpg" id="image" onmouseout=""/>
+			<img src="http://www.spikelupton.co.uk/Resources/100_1641.jpg" id="image" />
 			<img src="http://www.spikelupton.co.uk/Resources/100_3369.jpg" />
 			<img src="http://www.spikelupton.co.uk/Resources/100_4187.jpg" />
 			<img src="http://www.spikelupton.co.uk/Resources/IMG_1851.jpg" />
 		</div>
 		<div>
-			<button id ="previous" onclick="setOpacity(), animate(), previous()" >Previous</button>
-			<button id ="next" onclick="setOpacity(), animate(), next()">Next</button>
+			<button id ="previous" onclick="setOpacity(), animateCurrent(), animatePrevious(), previous()" >Previous</button>
+			<button id ="next" onclick="animateCurrent()">Next</button>
 		</div>
 
 				
