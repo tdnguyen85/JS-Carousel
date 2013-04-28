@@ -43,17 +43,9 @@ var imageIndex = imageIndexFunction();
 var imageCurrent = imageIndex.currentImage;
 var imageNext = imageIndex.nextImage;
 var imagePrevious = imageIndex.previousImage;
-/*
-function setOnLoad() {
-	image = document.getElementById('image');
-	imageArrayTag = document.getElementsByTagName('img');
-	for (i=0; i<imageArrayTag.length; i+=1) {
-	imageArray.push(imageArrayTag[i].src);
-	}
-}
-*/
+
 function next() {
-	image.style.opacity = 1;
+	//setOpacityZero();
 	for(i=0; i < imageArray.length; i+=1) {
 		if (image.src === imageArray[i]) {
 			if (image.src === imageArray[imageArray.length - 1]) {
@@ -66,7 +58,7 @@ function next() {
 	return (image.src = tracker);
 }
 function previous() {
-	image.style.opacity = 1;
+	setOpacityZero();
 	for(i=0; i < imageArray.length; i+=1) {
 		if (image.src === imageArray[i]) {
 			if (image.src === imageArray[0]) {
@@ -78,54 +70,44 @@ function previous() {
 	}
 	return (image.src = tracker);
 }
-function setMainOpacity() {
+function setOpacityOne() {
 	image = document.getElementById('image');
 	image.style.opacity = 1;
 }
-function setOpacity() {
-		setMainOpacity();
-
-	imageNext.style.opacity = 0;
-	imagePrevious.style.opacity = 0;
+function setOpacityZero() {
+	imageCurrent.style.opacity = 0;
+	changeNextPrevious();
 }
 function animateCurrent() {
-	setMainOpacity();
-	setOpacity();
-	function changeCurrent() {
+	setOpacityOne();
+	function changeOneToZero() {
 		if (imageCurrent.style.opacity > 0) {
-		imageCurrent.style.opacity -= 0.01;
+		imageCurrent.style.opacity -= 0.02;
 		}
 	}
-	function changeNext() {
-		if (imageNext.style.opacity <= 1) {
-		imageNext.style.opacity += 0.01;
-		}
-	}
-	var timer = setInterval(changeCurrent, 50);
+	var timer = setInterval(changeOneToZero, 70);
 	function stopMoving() {clearInterval(timer);}
-	setTimeout(stopMoving, 3000);
-	setTimeout(next, 3050);
+	setTimeout(stopMoving, 2500);
 }
-function animateNext() {
-	function changeNext() {
-		if (imageNext.style.opacity <= 1) {
-		imageNext.style.opacity += 0.01;
+function changeNextPrevious() {
+	function changeZeroToOne() {
+		if (imageCurrent.style.opacity <= 1) {
+		imageCurrent.style.opacity = (imageCurrent.style.opacity + 0.04);
+						console.log(imageCurrent.style.opacity);
+
 		}
 	}
-	var timer = setInterval(changeNext, 50);
-}
-function animatePrevious() {
-	function changePrevious() {
-		if (imagePrevious.style.opacity <= 1) {
-		imagePrevious.style.opacity += 0.01;
-		}
-	}
-	var timer = setInterval(changePrevious, 50);
-}
-	
-	/*
+	var timer = setInterval(changeZeroToOne, 70);
+	console.log('ending');
 	function stopMoving() {clearInterval(timer);}
-	setTimeout( stopMoving, 3000);
+	setTimeout(stopMoving, 2500);
+}
+function opacityChangeNext() {
+	animateCurrent();
+	setTimeout(next, 2600);
+	setTimeout(setOpacityZero, 2600);
+	//setTimeout(changeNextPrevious, 2700);
+}
+
 	
-	var timer2 = setInterval(changeImageNext, 40);
-	*/
+	
