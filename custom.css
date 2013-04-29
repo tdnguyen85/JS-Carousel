@@ -4,6 +4,14 @@ img {
 
 #container {
 	overflow: hidden;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top: auto;
+	margin-bottom: auto;
 	width: 462px;
-	height: 400px;
+	height: 346px;
+}
+#control-buttons {
+	margin-left:auto;
+	margin-right:auto;
 }

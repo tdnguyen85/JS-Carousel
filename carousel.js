@@ -58,7 +58,6 @@ function next() {
 	return (image.src = tracker);
 }
 function previous() {
-	setOpacityZero();
 	for(i=0; i < imageArray.length; i+=1) {
 		if (image.src === imageArray[i]) {
 			if (image.src === imageArray[0]) {
@@ -82,32 +81,36 @@ function animateCurrent() {
 	setOpacityOne();
 	function changeOneToZero() {
 		if (imageCurrent.style.opacity > 0) {
-		imageCurrent.style.opacity -= 0.02;
+		imageCurrent.style.opacity -= 0.03;
 		}
 	}
-	var timer = setInterval(changeOneToZero, 70);
+	var timer = setInterval(changeOneToZero, 60);
 	function stopMoving() {clearInterval(timer);}
-	setTimeout(stopMoving, 2500);
+	setTimeout(stopMoving, 2400);
 }
 function changeNextPrevious() {
 	function changeZeroToOne() {
 		if (imageCurrent.style.opacity <= 1) {
-		imageCurrent.style.opacity = (imageCurrent.style.opacity + 0.04);
+			imageCurrent.style.opacity = parseFloat(imageCurrent.style.opacity, 10) + 0.03;
 						console.log(imageCurrent.style.opacity);
-
 		}
 	}
-	var timer = setInterval(changeZeroToOne, 70);
+	var timer = setInterval(changeZeroToOne, 60);
 	console.log('ending');
 	function stopMoving() {clearInterval(timer);}
-	setTimeout(stopMoving, 2500);
+	setTimeout(stopMoving, 2400);
 }
 function opacityChangeNext() {
 	animateCurrent();
-	setTimeout(next, 2600);
-	setTimeout(setOpacityZero, 2600);
-	//setTimeout(changeNextPrevious, 2700);
+	setTimeout(next, 2400);
+	setTimeout(setOpacityZero, 2400);
+	setTimeout(changeNextPrevious, 2400);
 }
-
+function opacityChangePrevious() {
+	animateCurrent();
+	setTimeout(previous, 2400);
+	setTimeout(setOpacityZero, 2400);
+	setTimeout(changeNextPrevious, 2400);
+}
 	
 	
